@@ -214,10 +214,8 @@
             <input name="name" placeholder="Student name" autocomplete="name" required>
             <input name="parent" placeholder="Parent name" autocomplete="name" required>
             
-            <!-- Age updated to max 25 -->
             <input name="age" type="number" min="1" max="25" placeholder="Age" required>
 
-            <!-- Expanded Program Options -->
             <select name="program" required>
               <option value="" disabled selected>Select Program / Subject</option>
 
@@ -271,7 +269,6 @@
                 <option value="Bakery and Confectionery">Bakery and Confectionery</option>
                 <option value="Horticulture">Horticulture</option>
               </optgroup>
-
             </select>
 
             <input name="phone" type="tel" placeholder="Parent phone" autocomplete="tel">
@@ -376,10 +373,12 @@
           <form id="galleryForm" class="teacher-form">
             <input name="title" placeholder="Photo title e.g. Playground" required>
             <label class="upload">
-              🖼️ Upload Image
-              <input name="photo" type="file" accept="image/*" required>
+              🖼️ Upload Images (Select Multiple)
+              <!-- Added 'multiple' here to allow selecting multiple files -->
+              <input id="galleryPhotoInput" name="photo" type="file" accept="image/*" multiple required>
             </label>
-            <button type="submit" class="btn primary">+ Add Photo</button>
+            <!-- Changed text to plural -->
+            <button type="submit" class="btn primary">+ Add Photos</button>
           </form>
 
           <div id="galleryAdminGrid" class="gallery-admin-grid"></div>
