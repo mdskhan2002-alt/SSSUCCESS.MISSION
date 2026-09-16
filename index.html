@@ -3,14 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
   <title>S S SUCCESS MISSION | LEARN • SUCCESS • GROW</title>
+  
   <meta name="description" content="S S SUCCESS MISSION School — admissions, programs, campus, teachers and parent enquiries.">
+  
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+
+  <!-- ================= HEADER ================= -->
   <header class="site-header">
-    <div class="container nav">
+    <div class="container nav" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+      
       <a class="brand" href="#home">
         <span class="brand-mark">SS</span>
         <span>
@@ -18,28 +27,17 @@
           <small>Coaching Centre</small>
         </span>
       </a>
-      <!-- ===== SOCIAL MEDIA ICONS (ADDED HERE) ===== -->
-      <div class="social-icons" style="text-align: center; margin: 20px 0;">
-        <!-- WhatsApp -->
-        <a href="https://whatsapp.com/channel/0029Va6r0kO4Y9lmyHjwx20C" target="_blank" aria-label="WhatsApp" style="margin: 0 10px; font-size: 24px; color: #10d659;">
-          <i class="fa-brands fa-whatsapp"></i>
-        </a>
-        <a href="https://www.youtube.com/@SSSUCCESSMISSION" target="_blank" aria-label="YouTube - S S SUCCESS MISSION" style="margin: 0 10px; font-size: 24px; color: #FF0000;">
-          <i class="fa-brands fa-youtube"></i>
-        </a>
-          <a href="https://www.youtube.com/@shatrudhankumar" target="_blank" aria-label="YouTube - Shatrudhan Kumar" style="margin: 0 10px; font-size: 24px; color: #FF0000;">
-          <i class="fa-brands fa-youtube"></i>
-        </a>
-          <a href="https://www.instagram.com/shatrudhansatyarthi" target="_blank" aria-label="Instagram" style="margin: 0 10px; font-size: 24px; color: #b40d45;">
-          <i class="fa-brands fa-instagram"></i>
-        </a>
-          <a href="https://maps.app.goo.gl/qLL8hbuqzeAzRkBm6" target="_blank" aria-label="Google Maps" style="margin: 0 10px; font-size: 24px; color: #122ca0;">
-          <i class="fa-solid fa-location-dot"></i>
-        </a>
-          <a href="mailto:shatrudhansatyarthi@gmail.com" aria-label="Email Us" style="margin: 0 10px; font-size: 24px; color: #aa1709;">
-          <i class="fa-solid fa-envelope"></i>
-        </a>
+
+      <!-- ===== HEADER SOCIAL MEDIA ICONS ===== -->
+      <div class="social-icons header-socials" style="display: flex; gap: 15px; margin: 10px 0;">
+        <a href="https://whatsapp.com/channel/0029Va6r0kO4Y9lmyHjwx20C" target="_blank" aria-label="WhatsApp" style="font-size: 20px; color: #10d659;"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://www.youtube.com/@SSSUCCESSMISSION" target="_blank" aria-label="YouTube" style="font-size: 20px; color: #FF0000;"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://www.youtube.com/@shatrudhankumar" target="_blank" aria-label="YouTube 2" style="font-size: 20px; color: #FF0000;"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://www.instagram.com/shatrudhansatyarthi" target="_blank" aria-label="Instagram" style="font-size: 20px; color: #b40d45;"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://maps.app.goo.gl/qLL8hbuqzeAzRkBm6" target="_blank" aria-label="Google Maps" style="font-size: 20px; color: #122ca0;"><i class="fa-solid fa-location-dot"></i></a>
+        <a href="mailto:shatrudhansatyarthi@gmail.com" aria-label="Email" style="font-size: 20px; color: #aa1709;"><i class="fa-solid fa-envelope"></i></a>
       </div>
+
       <nav id="mainNav">
         <a href="#about">About</a>
         <a href="#programs">Programs</a>
@@ -48,12 +46,16 @@
         <a href="#admission">Admission</a>
         <a class="admin-link" href="admin.html">Admin</a>
       </nav>
+
       <button class="menu" type="button" aria-label="Open navigation menu" onclick="document.querySelector('nav').classList.toggle('open')">
         ☰
       </button>
+
     </div>
   </header>
+
   <main>
+    <!-- ================= HOME ================= -->
     <section id="home" class="hero">
       <div class="hero-overlay"></div>
       <div class="container hero-content">
@@ -74,6 +76,8 @@
         </div>
       </div>
     </section>
+
+    <!-- ================= STATS ================= -->
     <section class="stats">
       <div class="container stat-grid">
         <div><b>01</b><span>Happy learning environment</span></div>
@@ -82,6 +86,8 @@
         <div><b>04</b><span>Future-ready learning</span></div>
       </div>
     </section>
+
+    <!-- ================= ABOUT ================= -->
     <section id="about" class="section">
       <div class="container two-col">
         <div>
@@ -104,6 +110,8 @@
         </div>
       </div>
     </section>
+
+    <!-- ================= PROGRAMS ================= -->
     <section id="programs" class="section soft">
       <div class="container">
         <div class="eyebrow">PROGRAMS</div>
@@ -132,6 +140,8 @@
         </div>
       </div>
     </section>
+
+    <!-- ================= TEACHERS ================= -->
     <section id="teachers" class="section">
       <div class="container">
         <div class="eyebrow">OUR TEACHERS</div>
@@ -140,6 +150,8 @@
         <div id="teacherGrid" class="teacher-grid"></div>
       </div>
     </section>
+
+    <!-- ================= CAMPUS ================= -->
     <section id="campus" class="section soft">
       <div class="container">
         <div class="eyebrow">OUR CAMPUS</div>
@@ -162,6 +174,8 @@
         <div id="galleryGrid" class="gallery-grid"></div>
       </div>
     </section>
+
+    <!-- ================= FUTURE PLAN ================= -->
     <section class="future">
       <div class="container future-inner">
         <div>
@@ -177,6 +191,8 @@
         </div>
       </div>
     </section>
+
+    <!-- ================= ADMISSION ================= -->
     <section id="admission" class="section admission">
       <div class="container two-col">
         <div>
@@ -199,20 +215,66 @@
           <label>Child Name
             <input name="child" type="text" placeholder="Enter child name" required>
           </label>
+          
           <div class="form-row">
             <label>Age
               <input name="age" type="number" min="1" max="25" placeholder="Age" required>
             </label>
+            
             <label>Class / Program
-              <select name="program">
-                <option value="Class 5th to 10th">Class 5th to 10th</option>
-                <option value="11th & 12th Science">11th & 12th Science</option>
-                <option value="ITI">ITI</option>
-                <option value="Polytechnic">Polytechnic</option>
-                <option value="Activity Learning">Activity Learning</option>
+              <!-- UPDATED DROPDOWN TO MATCH ADMIN PANEL -->
+              <select name="program" required>
+                <option value="" disabled selected>Select Program</option>
+                <optgroup label="Class 5 (JNVST Entrance)">
+                  <option value="Mental Ability Test">Mental Ability Test</option>
+                  <option value="Arithmetic Test">Arithmetic Test (Mathematics)</option>
+                  <option value="Language Test">Language Test</option>
+                </optgroup>
+                <optgroup label="Class 6 to 8 Subjects">
+                  <option value="English">English</option>
+                  <option value="Hindi">Hindi</option>
+                  <option value="Regional Language">Regional Language / Third Language</option>
+                  <option value="Mathematics">Mathematics</option>
+                  <option value="Science">Science</option>
+                  <option value="Social Science">Social Science</option>
+                  <option value="Computer Science">Computer Science</option>
+                  <option value="Art Education">Art Education</option>
+                  <option value="Music">Music</option>
+                  <option value="Physical Education">Physical Education (Sports)</option>
+                </optgroup>
+                <optgroup label="Science Stream (11th & 12th)">
+                  <option value="Physics">Physics</option>
+                  <option value="Chemistry">Chemistry</option>
+                  <option value="Mathematics (Science)">Mathematics</option>
+                  <option value="Biology">Biology</option>
+                  <option value="English Core (Science)">English Core</option>
+                  <option value="Computer Science (Science)">Computer Science</option>
+                  <option value="Physical Education (Science)">Physical Education</option>
+                </optgroup>
+                <optgroup label="Arts Stream (11th & 12th)">
+                  <option value="History">History</option>
+                  <option value="Geography">Geography</option>
+                  <option value="Political Science">Political Science</option>
+                  <option value="Economics">Economics</option>
+                  <option value="Sociology">Sociology</option>
+                  <option value="English Core (Arts)">English Core</option>
+                  <option value="Hindi Core">Hindi Core</option>
+                  <option value="Psychology">Psychology</option>
+                </optgroup>
+                <optgroup label="ITI / Vocational Trades">
+                  <option value="Electrician">Electrician</option>
+                  <option value="Plumber">Plumber</option>
+                  <option value="Tool and Die Maker">Tool and Die Maker</option>
+                  <option value="Automotive Technology">Automotive Technology</option>
+                  <option value="Information Technology">Information Technology</option>
+                  <option value="Surveying">Surveying</option>
+                  <option value="Bakery and Confectionery">Bakery and Confectionery</option>
+                  <option value="Horticulture">Horticulture</option>
+                </optgroup>
               </select>
             </label>
           </div>
+          
           <label>Phone
             <input name="phone" type="tel" placeholder="Enter phone number" required>
           </label>
@@ -225,6 +287,8 @@
       </div>
     </section>
   </main>
+
+  <!-- ================= FOOTER ================= -->
   <footer>
     <div class="container footer-grid">
       <div>
@@ -234,7 +298,8 @@
       <div>
         <strong>Location & Contact</strong>
         <p>S.S.SUCCESS MISSION<br>PARORA CHHAURAHI<br>BEGUSARAI BIHAR PIN 848204</p>
-        <p><a href="mailto:mdskhan2002@gmail.com" style="color: inherit; text-decoration: none;"></a></p>
+        <!-- FIXED MISSING EMAIL TEXT HERE -->
+        <p><a href="mailto:shatrudhansatyarthi@gmail.com" style="color: inherit; text-decoration: none;">shatrudhansatyarthi@gmail.com</a></p>
       </div>
       <div>
         <strong>Infotech Software</strong>
@@ -243,33 +308,24 @@
         <p>mdskhan2002@gmail.com</p>
       </div>
     </div>
+
+    <!-- ===== FOOTER SOCIAL MEDIA ICONS ===== -->
     <div class="social-icons" style="text-align: center; margin: 20px 0;">
-      <!-- WhatsApp -->
       <a href="https://whatsapp.com/channel/0029Va6r0kO4Y9lmyHjwx20C" target="_blank" aria-label="WhatsApp" style="margin: 0 10px; font-size: 24px; color: #25D366;">
         <i class="fa-brands fa-whatsapp"></i>
       </a>
-      
-      <!-- YouTube: S S SUCCESS MISSION -->
       <a href="https://www.youtube.com/@SSSUCCESSMISSION" target="_blank" aria-label="YouTube - S S SUCCESS MISSION" style="margin: 0 10px; font-size: 24px; color: #FF0000;">
         <i class="fa-brands fa-youtube"></i>
       </a>
-
-      <!-- YouTube: Shatrudhan Kumar -->
       <a href="https://www.youtube.com/@shatrudhankumar" target="_blank" aria-label="YouTube - Shatrudhan Kumar" style="margin: 0 10px; font-size: 24px; color: #FF0000;">
         <i class="fa-brands fa-youtube"></i>
       </a>
-
-      <!-- Instagram -->
       <a href="https://www.instagram.com/shatrudhansatyarthi" target="_blank" aria-label="Instagram" style="margin: 0 10px; font-size: 24px; color: #E1306C;">
         <i class="fa-brands fa-instagram"></i>
       </a>
-
-      <!-- Google Maps -->
       <a href="https://maps.app.goo.gl/qLL8hbuqzeAzRkBm6" target="_blank" aria-label="Google Maps" style="margin: 0 10px; font-size: 24px; color: #4285F4;">
         <i class="fa-solid fa-location-dot"></i>
       </a>
-
-      <!-- Email -->
       <a href="mailto:shatrudhansatyarthi@gmail.com" aria-label="Email Us" style="margin: 0 10px; font-size: 24px; color: #D44638;">
         <i class="fa-solid fa-envelope"></i>
       </a>
