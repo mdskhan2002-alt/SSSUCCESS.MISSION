@@ -17,3 +17,30 @@ function readFile(file) { return new Promise((res, rej) => { const r = new FileR
 function fillSettings() { const d = getDB(), f = document.getElementById('settingsForm'); f.school.value = d.settings.school; f.phone.value = d.settings.phone; f.location.value = d.settings.location; f.future.value = d.settings.future }
 function exportData(type) { const d = getDB(); const blob = new Blob([JSON.stringify(d[type], null, 2)], { type: 'application/json' }), a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `S S SUCCESS MISSION-${type}.json`; a.click() }
 document.addEventListener('DOMContentLoaded', () => { document.querySelectorAll('.side').forEach(b => b.onclick = () => showTab(b.dataset.tab)); document.getElementById('attendanceDate').value = new Date().toISOString().slice(0, 10); document.getElementById('attendanceDate').addEventListener('change', renderAttendance); document.getElementById('studentForm').addEventListener('submit', e => { e.preventDefault(); const f = new FormData(e.target), d = getDB(); d.students.push({ name: f.get('name'), parent: f.get('parent'), age: f.get('age'), program: f.get('program'), phone: f.get('phone') }); put(d); e.target.reset() }); document.getElementById('teacherForm').addEventListener('submit', async e => { e.preventDefault(); const f = new FormData(e.target), d = getDB(), file = f.get('photo'); d.teachers.push({ id: Date.now(), name: f.get('name'), role: f.get('role'), qualification: f.get('qualification'), bio: f.get('bio'), photo: file && file.size ? await readFile(file) : '' }); put(d); e.target.reset() }); document.getElementById('galleryForm').addEventListener('submit', async e => { e.preventDefault(); const f = new FormData(e.target), d = getDB(), file = f.get('photo'); if (!file || !file.size) return; d.gallery.unshift({ id: Date.now(), title: f.get('title'), photo: await readFile(file) }); put(d); e.target.reset() }); document.getElementById('settingsForm').addEventListener('submit', e => { e.preventDefault(); const f = new FormData(e.target), d = getDB(); d.settings = { school: f.get('school'), phone: f.get('phone'), location: f.get('location'), future: f.get('future') }; put(d); document.getElementById('settingsMsg').textContent = 'Settings saved.' }); if (sessionStorage.getItem('S S SUCCESS MISSION_admin') === '1') { document.getElementById('login').classList.add('hidden'); document.getElementById('app').classList.remove('hidden'); renderAll() } });
+
+document.getElementById('galleryForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const title = e.target.title.value;
+    const files = e.target.photo.files; // Gets all selected files
+    const d = db();
+
+    if (files.length === 0) return;
+
+    // Loop through all selected files
+    Array.from(files).forEach(file => {
+        const reader = new FileReader();
+        reader.onload = function (event) {
+            d.gallery.unshift({
+                id: Date.now() + Math.random(), // generate unique ID
+                title: title,
+                photo: event.target.result // Base64 image
+            });
+            save(d);
+            renderAdminGallery(); // Call your function to update the gallery view
+        };
+        reader.readAsDataURL(file);
+    });
+
+    e.target.reset(); // Clear the form after upload
+});
