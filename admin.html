@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="S S SUCCESS MISSION School Management Dashboard">
+  <meta name="theme-color" content="#12355B">
+
+  <title>S S SUCCESS MISSION | Admin Panel</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="admin-body">
+
+  <!-- =====================================================
+       ADMIN LOGIN
+       ===================================================== -->
+
+  <div id="login" class="login-wrap">
+    <div class="login-card">
+      <!-- Brand -->
+      <div class="brand center">
+        <span class="brand-mark" aria-hidden="true">SS</span>
+        <span>
+          <b>S S SUCCESS MISSION</b>
+          <small>ADMIN PANEL</small>
+        </span>
+      </div>
+
+      <h1>Management Dashboard</h1>
+      <p>Sign in to manage admissions, students, attendance, teachers, gallery and school settings.</p>
+
+      <!-- Login Form -->
+      <form id="loginForm" onsubmit="event.preventDefault(); login();">
+        <label for="loginEmail">
+          Email
+          <input id="loginEmail" name="email" type="email" placeholder="Enter admin email" autocomplete="username" required>
+        </label>
+
+        <label for="loginPass">
+          Password
+          <input id="loginPass" name="password" type="password" placeholder="Enter password" autocomplete="current-password" required>
+        </label>
+
+        <button type="submit" class="btn primary full">Sign in</button>
+      </form>
+
+      <!-- Demo credentials -->
+      <div class="login-demo">
+        <small><strong></strong></small>
+        <small>Email: <b></b></small>
+        <small>Password: <b></b></small>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =====================================================
+       ADMIN APPLICATION
+       ===================================================== -->
+
+  <div id="app" class="admin-shell hidden">
+
+    <!-- ===================================================
+         SIDEBAR
+         =================================================== -->
+
+    <aside class="sidebar">
+      <!-- Sidebar Brand -->
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">SS</span>
+        <span>
+          <b>S S SUCCESS MISSION</b>
+          <small>ADMIN PANEL</small>
+        </span>
+      </div>
+
+      <!-- Dashboard -->
+      <button type="button" class="side active" data-tab="dashboard">📊 Dashboard</button>
+      <!-- Admissions -->
+      <button type="button" class="side" data-tab="admissions">✉️ Admissions</button>
+      <!-- Students -->
+      <button type="button" class="side" data-tab="students">👨‍🎓 Students</button>
+      <!-- Attendance -->
+      <button type="button" class="side" data-tab="attendance">✓ Attendance</button>
+      <!-- Teachers -->
+      <button type="button" class="side" data-tab="teachers">👩‍🏫 Teachers</button>
+      <!-- Gallery -->
+      <button type="button" class="side" data-tab="gallery">🖼️ Gallery</button>
+      <!-- Settings -->
+      <button type="button" class="side" data-tab="settings">⚙️ Settings</button>
+
+      <!-- View Website -->
+      <a class="back-site" href="index.html">← View Website</a>
+
+      <!-- Logout -->
+      <button type="button" class="logout" onclick="logout()">🚪 Logout</button>
+    </aside>
+
+
+    <!-- ===================================================
+         MAIN ADMIN AREA
+         =================================================== -->
+
+    <main class="admin-main">
+      <!-- Topbar -->
+      <header class="topbar">
+        <div>
+          <span class="eyebrow">S S SUCCESS MISSION MANAGEMENT</span>
+          <h1 id="tabTitle">Dashboard</h1>
+        </div>
+        <span class="live-dot">● Local demo data</span>
+      </header>
+
+
+      <!-- =================================================
+           DASHBOARD
+           ================================================= -->
+
+      <section id="dashboard" class="tab active">
+        <!-- Metrics -->
+        <div class="metric-grid">
+          <div class="metric">
+            <span>Total Enquiries</span>
+            <b id="mEnquiries">0</b>
+            <small>Admission leads</small>
+          </div>
+          <div class="metric">
+            <span>Students</span>
+            <b id="mStudents">0</b>
+            <small>Registered learners</small>
+          </div>
+          <div class="metric">
+            <span>Teachers</span>
+            <b id="mTeachers">0</b>
+            <small>Faculty profiles</small>
+          </div>
+          <div class="metric">
+            <span>Today's Attendance</span>
+            <b id="mAttendance">0%</b>
+            <small>Marked present</small>
+          </div>
+        </div>
+
+        <!-- Admission Pipeline -->
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Admission Pipeline</h2>
+              <p>Latest parent enquiries.</p>
+            </div>
+            <button type="button" class="btn small" onclick="showTab('admissions')">Manage</button>
+          </div>
+          <div id="dashEnquiries">
+            <p>Loading enquiries...</p>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- =================================================
+           ADMISSIONS
+           ================================================= -->
+
+      <section id="admissions" class="tab">
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Admission Enquiries</h2>
+              <p>Capture, review and track parent leads.</p>
+            </div>
+            <button type="button" class="btn small" onclick="exportData('enquiries')">Export JSON</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Parent</th>
+                  <th>Child</th>
+                  <th>Age</th>
+                  <th>Program</th>
+                  <th>Phone</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="enquiryTable">
+                <tr>
+                  <td colspan="7">Loading enquiries...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- =================================================
+           STUDENTS
+           ================================================= -->
+
+      <section id="students" class="tab">
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Student Register</h2>
+              <p>Full learner details for attendance and admissions.</p>
+            </div>
+          </div>
+
+          <!-- Add Student -->
+          <form id="studentForm" class="inline-form">
+            <input name="name" placeholder="Student name" autocomplete="name" required>
+            <input name="parent" placeholder="Parent name" autocomplete="name" required>
+            
+            <!-- Age updated to max 25 -->
+            <input name="age" type="number" min="1" max="25" placeholder="Age" required>
+
+            <!-- Expanded Program Options -->
+            <select name="program" required>
+              <option value="" disabled selected>Select Program / Subject</option>
+
+              <optgroup label="Class 5 (JNVST Entrance Exam)">
+                <option value="Mental Ability Test">Mental Ability Test</option>
+                <option value="Arithmetic Test">Arithmetic Test (Mathematics)</option>
+                <option value="Language Test">Language Test</option>
+              </optgroup>
+
+              <optgroup label="Class 6 to 8 Subjects">
+                <option value="English">English</option>
+                <option value="Hindi">Hindi</option>
+                <option value="Regional Language">Regional Language / Third Language</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Science">Science</option>
+                <option value="Social Science">Social Science (History, Geography, Civics)</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Art Education">Art Education</option>
+                <option value="Music">Music</option>
+                <option value="Physical Education (Sports)">Physical and Health Education (Sports)</option>
+              </optgroup>
+
+              <optgroup label="Science Stream (11th & 12th)">
+                <option value="Physics">Physics</option>
+                <option value="Chemistry">Chemistry</option>
+                <option value="Mathematics (Science)">Mathematics</option>
+                <option value="Biology">Biology</option>
+                <option value="English Core (Science)">English Core</option>
+                <option value="Computer Science (Science)">Computer Science</option>
+                <option value="Physical Education (Science)">Physical Education</option>
+              </optgroup>
+
+              <optgroup label="Arts / Humanities Stream (11th & 12th)">
+                <option value="History">History</option>
+                <option value="Geography">Geography</option>
+                <option value="Political Science">Political Science</option>
+                <option value="Economics">Economics</option>
+                <option value="Sociology">Sociology</option>
+                <option value="English Core (Arts)">English Core</option>
+                <option value="Hindi Core">Hindi Core</option>
+                <option value="Psychology">Psychology</option>
+              </optgroup>
+
+              <optgroup label="ITI / Vocational Trades">
+                <option value="Electrician">Electrician</option>
+                <option value="Plumber">Plumber</option>
+                <option value="Tool and Die Maker">Tool and Die Maker</option>
+                <option value="Automotive Technology">Automotive Technology</option>
+                <option value="Information Technology">Information Technology</option>
+                <option value="Surveying">Surveying</option>
+                <option value="Bakery and Confectionery">Bakery and Confectionery</option>
+                <option value="Horticulture">Horticulture</option>
+              </optgroup>
+
+            </select>
+
+            <input name="phone" type="tel" placeholder="Parent phone" autocomplete="tel">
+
+            <button type="submit" class="btn primary">+ Add Student</button>
+          </form>
+
+          <!-- Student Table -->
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Parent</th>
+                  <th>Age</th>
+                  <th>Program</th>
+                  <th>Phone</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="studentTable">
+                <tr>
+                  <td colspan="6">No students.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- =================================================
+           ATTENDANCE
+           ================================================= -->
+
+      <section id="attendance" class="tab">
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Attendance</h2>
+              <p>Mark present/absent and keep daily records.</p>
+            </div>
+            <label>
+              Date
+              <input id="attendanceDate" type="date">
+            </label>
+          </div>
+
+          <div id="attendanceList" class="attendance-list">
+            <p>Add students first.</p>
+          </div>
+
+          <button type="button" class="btn primary" onclick="saveAttendance()">✓ Save Attendance</button>
+          <span id="attendanceMsg" class="form-msg" role="status"></span>
+        </div>
+      </section>
+
+
+      <!-- =================================================
+           TEACHERS
+           ================================================= -->
+
+      <section id="teachers" class="tab">
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Teacher Profiles</h2>
+              <p>Upload photo, qualification, role and bio.</p>
+            </div>
+          </div>
+
+          <form id="teacherForm" class="teacher-form">
+            <input name="name" placeholder="Teacher name" required>
+            <input name="role" placeholder="Role e.g. Class Teacher" required>
+            <input name="qualification" placeholder="Qualification">
+            <textarea name="bio" placeholder="Short professional introduction"></textarea>
+            <label class="upload">
+              📷 Upload Teacher Photo
+              <input name="photo" type="file" accept="image/*">
+            </label>
+            <button type="submit" class="btn primary">+ Add Teacher</button>
+          </form>
+
+          <div id="teacherAdminGrid" class="teacher-admin-grid"></div>
+        </div>
+      </section>
+
+
+      <!-- =================================================
+           GALLERY
+           ================================================= -->
+
+      <section id="gallery" class="tab">
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Gallery & Playground Photos</h2>
+              <p>Upload campus, classroom and playground images.</p>
+            </div>
+          </div>
+
+          <form id="galleryForm" class="teacher-form">
+            <input name="title" placeholder="Photo title e.g. Playground" required>
+            <label class="upload">
+              🖼️ Upload Image
+              <input name="photo" type="file" accept="image/*" required>
+            </label>
+            <button type="submit" class="btn primary">+ Add Photo</button>
+          </form>
+
+          <div id="galleryAdminGrid" class="gallery-admin-grid"></div>
+        </div>
+      </section>
+
+
+      <!-- =================================================
+           SETTINGS
+           ================================================= -->
+
+      <section id="settings" class="tab">
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>School Settings</h2>
+              <p>Update contact details and future plan displayed on the website.</p>
+            </div>
+          </div>
+
+          <form id="settingsForm" class="settings-form">
+            <label>School Name
+              <input name="school" type="text" required>
+            </label>
+            <label>Phone
+              <input name="phone" type="tel" required>
+            </label>
+            <label>Location
+              <input name="location" type="text" required>
+            </label>
+            <label>Future Plan
+              <textarea name="future" rows="5"></textarea>
+            </label>
+            <button type="submit" class="btn primary">✓ Save Settings</button>
+            <span id="settingsMsg" class="form-msg" role="status"></span>
+          </form>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- =====================================================
+       JAVASCRIPT
+       ===================================================== -->
+  <script src="admin.js"></script>
+
+</body>
+</html>

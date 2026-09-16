@@ -1,0 +1,1479 @@
+/* /* :root{
+    --ink:#17212B;
+    --muted:#64748B;
+  
+    --brand:#12355B;
+    --brand2:#1D70A2;
+    --accent:#F4B942;
+  
+    --cream:#F6F9FC;
+    --soft:#EAF4FB;
+    --line:#E2E8F0;
+  
+    --green:#16A34A;
+    --danger:#DC3545;
+  
+    --white:#FFFFFF;
+    --shadow:0 18px 50px rgba(18,53,91,.10);
+    --radius:22px;
+  }
+  .site-header{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--line);
+  }
+
+  .brand-mark{
+    width:40px;
+    height:40px;
+    border-radius:13px;
+    display:grid;
+    place-items:center;
+    color:#fff;
+    font-weight:900;
+    background:linear-gradient(
+      135deg,
+      var(--brand),
+      var(--brand2)
+    );
+    box-shadow:0 8px 18px rgba(18,53,91,.22);
+  }
+  .btn.primary{
+    background:linear-gradient(
+      135deg,
+      var(--brand),
+      var(--brand2)
+    );
+    color:#fff;
+    box-shadow:0 10px 24px rgba(18,53,91,.22);
+  }
+
+  .sidebar{
+    width:245px;
+    background:#12355B;
+    color:#DCE8F2;
+    padding:24px 15px;
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+    position:fixed;
+    inset:0 auto 0 0;
+  }
+  
+  .side{
+    border:0;
+    background:transparent;
+    color:#C9D8E6;
+    text-align:left;
+    padding:12px 13px;
+    border-radius:12px;
+    font-weight:800;
+    cursor:pointer;
+  }
+  
+  .side:hover,
+  .side.active{
+    background:#1D70A2;
+    color:#fff;
+  }
+  .login-wrap{
+    min-height:100vh;
+    display:grid;
+    place-items:center;
+    background:
+      radial-gradient(
+        circle at top right,
+        #DCEEFF,
+        transparent 40%
+      ),
+      linear-gradient(
+        135deg,
+        #F6F9FC,
+        #EAF4FB
+      );
+  }
+  
+  .login-card{
+    width:min(430px,92%);
+    background:#fff;
+    padding:35px;
+    border-radius:26px;
+    border:1px solid var(--line);
+    box-shadow:0 30px 80px rgba(18,53,91,.15);
+  }
+  ```css
+/* =========================================================
+   S S SUCCESS MISSION
+   Professional School Website + Admin Dashboard
+   Theme: Navy Blue + Royal Blue + Gold
+   ========================================================= */
+
+/* =========================
+   1. ROOT / DESIGN SYSTEM
+   ========================= */
+
+:root {
+  --ink: #17212b;
+  --muted: #64748b;
+
+  --brand: #12355b;
+  --brand2: #1d70a2;
+  --accent: #f4b942;
+
+  --cream: #f6f9fc;
+  --soft: #eaf4fb;
+
+  --white: #ffffff;
+  --black: #0b1724;
+
+  --line: #e2e8f0;
+
+  --green: #16a34a;
+  --green-soft: #ecfdf5;
+
+  --danger: #dc3545;
+  --danger-soft: #fff1f2;
+
+  --warning: #d97706;
+  --warning-soft: #fff7ed;
+
+  --info: #2563eb;
+  --info-soft: #eff6ff;
+
+  --shadow-sm: 0 5px 18px rgba(18, 53, 91, 0.06);
+  --shadow: 0 18px 50px rgba(18, 53, 91, 0.10);
+  --shadow-lg: 0 30px 80px rgba(18, 53, 91, 0.16);
+
+  --radius-sm: 10px;
+  --radius: 18px;
+  --radius-lg: 26px;
+  --radius-xl: 32px;
+
+  --transition: 0.25s ease;
+}
+
+/* =========================
+   2. RESET
+   ========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  margin: 0;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+
+  color: var(--ink);
+  background: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--brand);
+  color: var(--white);
+}
+
+/* =========================
+   3. GLOBAL
+   ========================= */
+
+.container {
+  width: min(1140px, 92%);
+  margin: auto;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.center {
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* =========================
+   4. HEADER / NAVIGATION
+   ========================= */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid var(--line);
+
+  box-shadow: 0 3px 18px rgba(18, 53, 91, 0.04);
+}
+
+.nav {
+  height: 78px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.brand-mark {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 13px;
+
+  color: var(--white);
+  font-weight: 900;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--brand),
+      var(--brand2)
+    );
+
+  box-shadow:
+    0 8px 20px rgba(18, 53, 91, 0.22);
+}
+
+.brand b {
+  display: block;
+
+  font-size: 15px;
+  letter-spacing: 0.6px;
+  color: var(--brand);
+}
+
+.brand small {
+  display: block;
+
+  font-size: 9px;
+  letter-spacing: 1.8px;
+
+  color: var(--muted);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+
+  font-size: 14px;
+  font-weight: 750;
+}
+
+nav a {
+  position: relative;
+  color: var(--ink);
+
+  transition:
+    color var(--transition);
+}
+
+nav a::after {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+
+  width: 0;
+  height: 2px;
+
+  background: var(--accent);
+
+  transition: width var(--transition);
+}
+
+nav a:hover {
+  color: var(--brand);
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+.admin-link {
+  padding: 9px 15px;
+
+  border: 1px solid var(--line);
+  border-radius: 999px;
+
+  color: var(--brand);
+  background: var(--white);
+
+  transition: all var(--transition);
+}
+
+.admin-link:hover {
+  background: var(--brand);
+  color: var(--white);
+  border-color: var(--brand);
+}
+
+.menu {
+  display: none;
+
+  border: 0;
+  background: transparent;
+
+  color: var(--brand);
+  font-size: 25px;
+}
+
+/* =========================
+   5. HERO
+   ========================= */
+
+.hero {
+  position: relative;
+
+  min-height: 690px;
+
+  display: flex;
+  align-items: center;
+
+  background:
+    url("assets/school-front.png")
+    center / cover no-repeat;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(7, 25, 45, 0.92),
+      rgba(18, 53, 91, 0.62),
+      rgba(18, 53, 91, 0.18)
+    );
+}
+
+.hero-content {
+  position: relative;
+
+  max-width: 760px;
+
+  padding: 100px 0;
+
+  margin-left:
+    max(
+      4%,
+      calc((100vw - 1140px) / 2)
+    );
+
+  color: var(--white);
+}
+
+.pill,
+.eyebrow {
+  display: inline-flex;
+
+  letter-spacing: 1.7px;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.pill {
+  padding: 8px 14px;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  border-radius: 999px;
+
+  margin-bottom: 18px;
+
+  backdrop-filter: blur(8px);
+}
+
+.hero h1 {
+  margin: 0 0 22px;
+
+  font-size: clamp(44px, 7vw, 78px);
+
+  line-height: 1.02;
+
+  letter-spacing: -3px;
+}
+
+.hero h1 span {
+  color: var(--accent);
+}
+
+.hero p {
+  max-width: 690px;
+
+  font-size: 19px;
+
+  color: #edf6ff;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 12px;
+
+  margin: 28px 0;
+}
+
+.hero-trust {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 18px;
+
+  font-size: 13px;
+  color: var(--white);
+}
+
+/* =========================
+   6. BUTTONS
+   ========================= */
+
+.btn {
+  border: 0;
+
+  border-radius: 13px;
+
+  padding: 13px 19px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  font-weight: 850;
+
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    background var(--transition);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn.primary {
+  color: var(--white);
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--brand),
+      var(--brand2)
+    );
+
+  box-shadow:
+    0 10px 24px rgba(18, 53, 91, 0.24);
+}
+
+.btn.primary:hover {
+  box-shadow:
+    0 15px 32px rgba(18, 53, 91, 0.30);
+}
+
+.btn.light {
+  color: var(--brand);
+  background: var(--white);
+}
+
+.btn.small {
+  padding: 9px 13px;
+
+  font-size: 13px;
+
+  background: var(--soft);
+  color: var(--brand);
+}
+
+.btn.full {
+  width: 100%;
+}
+
+/* =========================
+   7. STATS
+   ========================= */
+
+.stats {
+  background: var(--white);
+
+  border-bottom: 1px solid var(--line);
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.stat-grid div {
+  padding: 25px 15px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+
+  border-right: 1px solid var(--line);
+}
+
+.stat-grid div:last-child {
+  border-right: 0;
+}
+
+.stat-grid b {
+  font-size: 25px;
+  color: var(--brand);
+}
+
+.stat-grid span {
+  font-size: 13px;
+
+  color: var(--muted);
+
+  font-weight: 700;
+}
+
+/* =========================
+   8. SECTIONS
+   ========================= */
+
+.section {
+  padding: 100px 0;
+}
+
+.soft {
+  background: var(--soft);
+}
+
+.admission {
+  background: #f8fbfe;
+}
+
+.eyebrow {
+  color: var(--brand);
+  margin-bottom: 9px;
+}
+
+.section h2,
+.future h2 {
+  margin: 0 0 18px;
+
+  font-size: clamp(34px, 4vw, 50px);
+
+  line-height: 1.08;
+
+  letter-spacing: -1.5px;
+}
+
+.section p {
+  color: var(--muted);
+}
+
+.section-lead {
+  max-width: 700px;
+}
+
+/* =========================
+   9. ABOUT
+   ========================= */
+
+.two-col {
+  display: grid;
+
+  grid-template-columns: 1.1fr 0.9fr;
+
+  gap: 70px;
+
+  align-items: center;
+}
+
+.about-card {
+  padding: 40px;
+
+  border-radius: 30px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #eaf4fb
+    );
+
+  border: 1px solid var(--line);
+
+  box-shadow: var(--shadow);
+}
+
+.about-icon {
+  font-size: 50px;
+}
+
+.about-card h3 {
+  margin: 12px 0;
+
+  font-size: 30px;
+
+  color: var(--brand);
+}
+
+.quote {
+  margin-top: 20px;
+
+  font-weight: 900;
+
+  color: var(--brand);
+}
+
+.check-list {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 12px;
+
+  margin-top: 25px;
+
+  font-weight: 800;
+
+  font-size: 14px;
+}
+
+.check-list div::first-letter {
+  color: var(--green);
+}
+
+/* =========================
+   10. SERVICE CARDS
+   ========================= */
+
+.cards {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 18px;
+
+  margin-top: 32px;
+}
+
+.cards article {
+  padding: 28px;
+
+  border-radius: 22px;
+
+  background: var(--white);
+
+  border: 1px solid var(--line);
+
+  box-shadow: var(--shadow-sm);
+
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.cards article:hover {
+  transform: translateY(-6px);
+
+  box-shadow: var(--shadow);
+}
+
+.cards article > div {
+  font-size: 34px;
+}
+
+.cards h3 {
+  margin: 12px 0 5px;
+
+  color: var(--brand);
+}
+
+.cards p {
+  font-size: 14px;
+}
+
+/* =========================
+   11. TEACHERS
+   ========================= */
+
+.teacher-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 18px;
+
+  margin-top: 32px;
+}
+
+.teacher-card {
+  overflow: hidden;
+
+  background: var(--white);
+
+  border: 1px solid var(--line);
+
+  border-radius: 22px;
+
+  box-shadow: var(--shadow-sm);
+}
+
+.teacher-card img {
+  width: 100%;
+  height: 230px;
+
+  object-fit: cover;
+
+  background: var(--soft);
+}
+
+.teacher-card .pad {
+  padding: 20px;
+}
+
+.teacher-card h3 {
+  margin: 0;
+
+  color: var(--brand);
+}
+
+.teacher-card p {
+  font-size: 13px;
+  margin: 7px 0;
+}
+
+/* =========================
+   12. CAMPUS
+   ========================= */
+
+.campus-grid {
+  display: grid;
+
+  grid-template-columns: 1.15fr 0.85fr;
+
+  gap: 30px;
+
+  align-items: stretch;
+}
+
+.campus-photo {
+  min-height: 400px;
+
+  overflow: hidden;
+
+  border-radius: 28px;
+
+  box-shadow: var(--shadow);
+}
+
+.campus-photo img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.campus-copy {
+  padding: 36px;
+
+  background: var(--white);
+
+  border: 1px solid var(--line);
+
+  border-radius: 28px;
+}
+
+.feature-list {
+  display: grid;
+
+  gap: 14px;
+
+  margin-top: 25px;
+}
+
+.feature-list div {
+  display: grid;
+
+  grid-template-columns: 35px 1fr;
+
+  column-gap: 7px;
+}
+
+.feature-list small {
+  grid-column: 2;
+
+  color: var(--muted);
+}
+
+/* =========================
+   13. GALLERY
+   ========================= */
+
+.gallery-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 14px;
+
+  margin-top: 18px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 190px;
+
+  object-fit: cover;
+
+  border-radius: 18px;
+
+  border: 1px solid var(--line);
+
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.025);
+
+  box-shadow: var(--shadow);
+}
+
+/* =========================
+   14. FUTURE SECTION
+   ========================= */
+
+.future {
+  padding: 90px 0;
+
+  background:
+    linear-gradient(
+      120deg,
+      #0c253e,
+      #12355b,
+      #1d70a2
+    );
+
+  color: var(--white);
+}
+
+.future-inner {
+  display: grid;
+
+  grid-template-columns: 1.1fr 0.9fr;
+
+  gap: 50px;
+
+  align-items: center;
+}
+
+.future p {
+  color: #dbeafe;
+}
+
+.future .eyebrow {
+  color: var(--accent);
+}
+
+.future-points {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 12px;
+}
+
+.future-points span {
+  padding: 18px;
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  border-radius: 15px;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  font-weight: 800;
+}
+
+/* =========================
+   15. CONTACT / ADMISSION
+   ========================= */
+
+.contact-box {
+  margin-top: 28px;
+
+  padding: 22px;
+
+  background: var(--white);
+
+  border: 1px solid var(--line);
+
+  border-radius: 18px;
+
+  display: grid;
+
+  gap: 7px;
+
+  box-shadow: var(--shadow-sm);
+}
+
+.form-card {
+  padding: 30px;
+
+  background: var(--white);
+
+  border: 1px solid var(--line);
+
+  border-radius: 24px;
+
+  box-shadow: var(--shadow);
+}
+
+.form-card h3 {
+  margin-top: 0;
+
+  font-size: 24px;
+
+  color: var(--brand);
+}
+
+.form-card label,
+.settings-form label {
+  display: block;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  margin: 12px 0;
+}
+
+.form-card input,
+.form-card select,
+.form-card textarea,
+.settings-form input,
+.settings-form textarea,
+.teacher-form input,
+.teacher-form textarea,
+.inline-form input,
+.inline-form select,
+.login-card input {
+  width: 100%;
+
+  padding: 12px 13px;
+
+  border: 1px solid #d9e2ec;
+
+  border-radius: 11px;
+
+  margin-top: 6px;
+
+  outline: none;
+
+  background: var(--white);
+
+  color: var(--ink);
+
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.form-card textarea,
+.teacher-form textarea,
+.settings-form textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.form-card input:focus,
+.form-card select:focus,
+.form-card textarea:focus,
+.settings-form input:focus,
+.settings-form textarea:focus,
+.teacher-form input:focus,
+.teacher-form textarea:focus,
+.inline-form input:focus,
+.inline-form select:focus,
+.login-card input:focus {
+  border-color: var(--brand2);
+
+  box-shadow:
+    0 0 0 3px rgba(29, 112, 162, 0.10);
+}
+
+.form-row {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 12px;
+}
+
+.form-msg {
+  font-size: 13px;
+
+  font-weight: 800;
+
+  color: var(--green);
+
+  margin: 8px 0;
+}
+
+/* =========================
+   16. FOOTER
+   ========================= */
+
+footer {
+  background: #091522;
+
+  color: #dce5ee;
+
+  padding: 55px 0 0;
+}
+
+.footer-grid {
+  display: grid;
+
+  grid-template-columns: 2fr 1fr 1fr;
+
+  gap: 40px;
+}
+
+.footer-grid b {
+  color: var(--white);
+}
+
+.footer-grid a,
+.footer-grid span {
+  display: block;
+
+  margin-top: 8px;
+
+  color: #aebdca;
+
+  font-size: 13px;
+}
+
+.footer-grid a:hover {
+  color: var(--accent);
+}
+
+.copyright {
+  text-align: center;
+
+  padding: 22px;
+
+  margin-top: 35px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+  font-size: 12px;
+
+  color: #7f919e;
+}
+
+/* =========================================================
+   ADMIN DASHBOARD
+   ========================================================= */
+
+/* =========================
+   17. ADMIN BODY
+   ========================= */
+
+.admin-body {
+  background: #f4f7fb;
+}
+
+/* =========================
+   18. ADMIN SHELL
+   ========================= */
+
+.admin-shell {
+  display: flex;
+
+  min-height: 100vh;
+}
+
+/* =========================
+   19. SIDEBAR
+   ========================= */
+
+.sidebar {
+  width: 245px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #0c253e,
+      #12355b
+    );
+
+  color: #dce8f2;
+
+  padding: 24px 15px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+
+  position: fixed;
+
+  inset: 0 auto 0 0;
+
+  z-index: 100;
+}
+
+.sidebar .brand {
+  padding: 4px 10px 20px;
+}
+
+.sidebar .brand b {
+  color: var(--white);
+}
+
+.sidebar .brand small {
+  color: #a9c3d9;
+}
+
+.side,
+.logout {
+  border: 0;
+
+  background: transparent;
+
+  color: #bfd0df;
+
+  text-align: left;
+
+  padding: 12px 13px;
+
+  border-radius: 12px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    background var(--transition),
+    color var(--transition);
+}
+
+.side:hover {
+  background: rgba(255, 255, 255, 0.08);
+
+  color: var(--white);
+}
+
+.side.active {
+  background: var(--brand2);
+
+  color: var(--white);
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.back-site {
+  margin-top: 15px;
+
+  padding: 12px 13px;
+
+  color: var(--accent);
+
+  font-size: 13px;
+
+  font-weight: 800;
+}
+
+.logout {
+  margin-top: auto;
+
+  background: rgba(220, 53, 69, 0.12);
+
+  color: #ffb4bd;
+}
+
+.logout:hover {
+  background: var(--danger);
+
+  color: var(--white);
+}
+
+/* =========================
+20. ADMIN MAIN
+   ========================= */
+
+.admin-main {
+  margin-left: 245px;
+
+  width: calc(100% - 245px);
+
+  padding: 35px;
+}
+
+.topbar {
+  display: flex;
+
+  align-items: end;
+
+  justify-content: space-between;
+
+  margin-bottom: 25px;
+}
+
+.topbar h1 {
+  margin: 0;
+
+  font-size: 34px;
+
+  color: var(--brand);
+}
+
+.live-dot {
+  font-size: 12px;
+
+  color: var(--green);
+
+  font-weight: 800;
+}
+
+/* =========================
+21. METRICS
+   ========================= */
+
+.metric-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 16px;
+}
+
+.metric,
+.panel {
+  background: var(--white);
+
+  border: 1px solid var(--line);
+
+  border-radius: 20px;
+
+  box-shadow: var(--shadow-sm);
+}
+
+.metric {
+  padding: 22px;
+
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.metric:hover {
+  transform: translateY(-3px);
+
+  box-shadow: var(--shadow);
+}
+
+.metric span,
+.metric small {
+  display: block;
+
+  color: var(--muted);
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+.metric b {
+  display: block;
+
+  font-size: 34px;
+
+  margin: 8px 0;
+
+  color: var(--brand);
+}
+
+/* =========================
+22. ADMIN PANELS
+   ========================= */
+
+.panel {
+  margin-top: 18px;
+
+  padding: 25px;
+}
+
+.panel-head {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin-bottom: 20px;
+}
+
+.panel h2 {
+  margin: 0;
+
+  color: var(--brand);
+}
+
+.panel p {
+  margin: 4px 0;
+
+  color: var(--muted);
+
+  font-size: 13px;
+}
+
+/* =========================
+   23. TABLE
+   ========================= */
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  font-size: 13px;
+}
+
+th,
+td {
+  text-align: left;
+
+  padding: 13px 10px;
+
+  border-bottom: 1px solid #edf0f4;
+
+  white-space: nowrap;
+}
+
+th {
+  font-size: 11px;
+
+  color: #718096;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.6px;
+
+  background: #f8fafc;
+}
+
+tr:hover td {
+  background: #fbfdff;
+}
+
+/* =========================
+   24. BADGES
+   ========================= */
+
+.badge {
+  padding: 5px 9px;
+
+  border-radius: 999px;
+
+  background: var(--green-soft);
+
+  color: #15803d;
+
+  font-size: 11px;
+
+  font-weight: 900;
+}
+
+/* =========================
+   25. ADMIN FORMS
+   ========================= */
+
+.inline-form {
+  display: grid;
+
+  grid-template-columns:
+    1.3fr
+    1.2fr
+    0.6fr
+    1fr
+    1.2fr
+    auto;
+
+  gap: 8px;
+
+  margin-bottom: 22px;
+}
+
+.inline-form input,
+.inline 
